@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}   <title>problem-list</title> {% endblock %}
+
+{% block dropdown-menu %}
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        {% for cata in catagories %}
+        <a class="dropdown-item" href="{% url 'catagory' cata.catagory_name %}">{{ cata.catagory_name }}</a>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block content %}
+
+    <div style="margin: 0 auto;">
+        <a href="{% url 'problem' %}"><input type="button" value="add problem" style="width: 100px; height: 35px ; background-color: #0c5460; border-radius:5px;color: white; "> </a>
+    </div>
+ <div style="margin: 0 auto;">
+{% for problem in problems %}
+    <div style="margin: 0 auto;"><h3 style="margin-top: 10px">{{ problem.title }}</h3></div>
+    <p>{{ problem.descriptions }}</p>
+{% endfor %}
+ </div>
+{% endblock %}
+
+
+
+{% block col-lg-4 %}
+
+{% endblock %}

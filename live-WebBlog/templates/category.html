@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block title %}   <title>catagory</title> {% endblock %}
+{% block dropdown-menu %}
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        {% for cata in catagories2 %}
+        <a class="dropdown-item" href="{% url 'catagory' cata.catagory_name %}">{{ cata.catagory_name }}</a>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block content %}
+    <section class="all_post section_padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                {% for post in catagories %}
+                    <div class="single_post media post_3">
+                        <div class="single_post_img">
+                            <img src="{{ post.image.url }}" alt="" style="width: 370px;height: 345px;border: 1px solid #e8ebed" >
+                        </div>
+                        <div class="post_text_1 media-body align-self-center">
+                            <p><span> By {{ post.author }}</span> / {{ post.pub_date }}</p>
+                           <a href="{% url 'summery' post.id %}">
+                                <h3>{{ post.title }}</h3>
+                            </a>
+                           <p class="excert">{{ post.summary }}...<a href="{% url 'detail' post.id %}">Read more</a></p>
+                        </div>
+                    </div>
+                {% endfor %}
+                </div>
+{% endblock %}
+{% block col-lg-4 %}
+                <div class="col-lg-4">
+                    <div class="sidebar_widget">
+                        <div class="sidebar_tittle">
+                            <h3>Latest Post</h3>
+                        </div>
+                        {% for p in latest_post %}
+                        <div class="single_catagory_post post_2 single_border_bottom">
+                            {% if p %}
+                                <div class="category_post_img">
+                                <img src="{{ p.image.url }}" alt="" style="width: 370px;height: 345px;border: 1px solid #e8ebed" >
+                            </div>
+                            <div class="post_text_1 pr_30">
+                                <p><span> By {{ p.author }}</span> / {{ p.pub_date  }}</p>
+                                <a href="{% url 'summery' p.id %}">
+                                    <h3>{{ p.title }}</h3>
+                                </a>
+                            </div>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+
+
+                        <div class="sidebar_tittle">
+                            <h3>Categories</h3>
+                        </div>
+
+                    <div class="single_catagory_item category">
+                            <ul class="list-unstyled">
+                                {% for cat in catagories2 %}
+                                <li><a href="{% url 'catagory' cat.catagory_name %}">{{ cat.catagory_name }} ({{ cat.get_cata_count }})</a></li>
+                                {% endfor %}
+                            </ul>
+                    </div>
+                </div>
+                </div>
+    </div>
+    <div style="margin: 0 auto;">
+<ul class="pagination justify-content-center mb-4">
+          <li class="page-item disable">
+              {% if catagories.has_previous %}
+            <a href="?page={{ catagories.previous_page_number }}"style="text-space: 2px;">←Prev </a>
+              {% endif %}
+          </li>
+          <li class="page-item disabled">
+              {% if catagories.has_next %}
+            <a href="?page={{ catagories.next_page_number }}">Next →</a>
+              {% endif %}
+          </li>
+         <span style="padding-left: 3px">{{ catagories.number }} of {{ catagories.paginator.num_pages }}</span>
+</ul>
+</div>
+{% endblock %}

@@ -1,0 +1,46 @@
+.card{
+    margin: 0 auto;
+    border: none;
+
+}
+.p-size{
+    width: 500px;
+    height: auto;
+}
+b{
+    color: #1b1e21;
+}
+.card-img-top {
+    width: 370px;
+    height: 378px;
+    margin: 0 auto;
+}
+.card-position{
+    margin: 0 auto;
+}
+.section_padding {
+    padding: 40px 0px;
+}
+.card-title{
+    text-align: center;
+}
+.text-secondary{
+    text-align: center;
+}
+img.post-image{
+    width: 370px;
+    height: 345px;
+}
+.page-part{
+    margin: 0 auto;
+}
+.paginator-part{
+    margin: 0 auto;
+}
+#id_user_name{
+    width: 200px;
+}
+.post-problem{
+    background-color: yellow;
+}
+.post-problem

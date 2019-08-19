@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+{% block title %}   <title>about</title> {% endblock %}
+
+{% block dropdown-menu %}
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        {% for cata in catagories %}
+        <a class="dropdown-item" href="{% url 'catagory' cata.catagory_name %}">{{ cata.catagory_name }}</a>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block content %}
+ <div class="card" >
+          <img class="card-img-top" src="../static/img/Git%20pro.jpg" alt="Md. Ahadujjaman Nur">
+          <div class="card-body">
+            <h5 class="card-title"><b>মোঃ নূর আমিন সিফাত</b></h5>
+            <h6 class="text-secondary">Python Developer</h6>
+            <p class="p-size">
+             আসসালামু আলাইকুম আমার নাম ইতোমধ্যে উপরে দেওয়া আছে,  আমি বর্তমানে ড্যাফোডিল ইন্টারন্যাশনাল ইউনিভার্সিটি কম্পিউটার সাইন্স এন্ড ইঞ্জিনিয়ারিংয়ে বিএসসিতে অধ্যয়নরত আছি। পাইথনের প্রতি অকৃত্রিম ভালবাসা থেকেই এই ব্লগটি তৈরি করা।
+                যদিও কাজটা অনেক সহজ, তবুও প্রথম কোন কাজ লাইভে আনাটা সত্যিই অনেক বড় কিছু আমার জন্য।  আসলে ২০১৭ সাল আগেও প্রগ্রামিং সম্পর্কে তেমন কোন ধারণা বা জ্ঞান ছিল না,
+                যখন ভার্সিটিতে ভর্তি হলাম আমার তখন কয়েকদিনের মাঝে হাসান ভাইয়ের সাথে পরিচয়, তখন তার কাছ থেকেই প্রগ্রামিংয়ের হাতেখড়ি, আগে আল্লাহ তারপর তার অনেক সহযোগিতার মাধ্যমে কিছুটা প্রগ্রামিং শিখা।
+                তারপর থেকে প্রগ্রামিংকে যতদূর নিজের করে নেওয়ার চেষ্টা। ২০১৭ সালের ডিসেম্বরের শেষের দিকে হঠাৎ করে পাইথনের প্রেমে পড়া,
+                তখন থেকেই এটা নিয়ে পড়ে থাকা। তারপর নিজে নিজে গুগল মামা আর ইউটিউবের সহোযোগিতা  পাইথনের ব্যাকইন্ড ফ্রেমওয়ার্ক জ্যাংগোতে এই সাইটটা তৈরি করা।
+            </p>
+          </div>
+  </div>
+{% endblock %}
+
+
+{% block col-lg-4 %}
+{#<div class="card">#}
+{##}
+{#<div class="col-md-8">#}
+{#        <h2>MD. AHADUJJAMAN NUR</h2>#}
+{#        <p class="lead">#}
+{#          132/B, SHAHEED SALAM BARKAT HALL · JAHANGIRNAGAR UNIVERSITY, SAVAR,#}
+{#          DHAKA-1342#}
+{#        </p>#}
+{#        <p class="mt-4">#}
+{#          Experienced in web design and templating. Iterative approaches to#}
+{#          manage web applications. Still learning, Intermediate web developer#}
+{#          and a positive thinker. Intersted in sharing knowledge.#}
+{#        </p>#}
+{#        <br>#}
+{##}
+{#        <h2>EDUCATION</h2>#}
+{#        <p class="lead">#}
+{#          Bachelor of Business Adminstration (BBA), Department of Finance &amp;#}
+{#          Banking#}
+{#        </p>#}
+{#        <p class="lead">Jahangirnagar University</p>#}
+{#        <br>#}
+{##}
+{#        <h2>EXPERIENCE</h2>#}
+{#        <p class="lead">WEB DESIGNER - UNIVERSITY TOURS AND TRAVELS</p>#}
+{#        <p>#}
+{#          Establishd a temporary website for the first time for a Travel Agency.#}
+{#          It took me some time to do that. But that was fun. It was very nice#}
+{#          work with them.#}
+{#        </p>#}
+{#        <br>#}
+{#        <p class="lead">WEB DESIGNER AND DEVELOPER - NUR'S BLOG</p>#}
+{#        <p>#}
+{#          Establishd this personal blog and some other realistic applications#}
+{#          like this application.#}
+{#        </p>#}
+{#        <br>#}
+{##}
+{#        <h2>SKILLS</h2>#}
+{#        <p class="lead">PROGRAMMING LANGUAGES &amp; TOOLS</p>#}
+{#        <p>#}
+{#          HTML - CSS - JAVASCRIPT - BOOTSTRAP - PYTHON - DJANGO - LINUX - FLASK#}
+{#        </p>#}
+{#        <br>#}
+{##}
+{#        <h2>INTERESTS</h2>#}
+{#        <p class="lead">MAIN INTEREST IN WEB DEVELOMENT AND DESIGN</p>#}
+{#        <p>#}
+{#          Apart from being a web developer, I enjoy most of my time being#}
+{#          outdoors. In the winter, I go to the hills and if anywhere play#}
+{#          badminton. During summer seasion playing indoor games is like fun. I#}
+{#          enjoy cycling, free climbing, and walking alone.#}
+{#        </p>#}
+{##}
+{#        <p>#}
+{#          When forced indoors, I watch a number of science-fiction and fantasy#}
+{#          genre movies and play racing games, I am an aspiring chef, and I spend#}
+{#          a large amount of my free time exploring the latest technolgy#}
+{#          advancements in the front-end as well as back-end web development#}
+{#          world.#}
+{#        </p>#}
+{#        <p>#}
+{#          Once upon a time i used to gardening, after growing up i was used to#}
+{#          paint. Painting gave me much pleasure and now all my interset fall on#}
+{#          new technologies and programming and after knowing the word#}
+{#          programming it takes my day and night from me. I just love it.#}
+{#        </p>#}
+{#        <p>If the interest goes to eat, I have to say, Love BIRIYANI a lot.</p>#}
+{#        <br>#}
+{#      </div>#}
+{##}
+{#</div>#}
+{% endblock %}

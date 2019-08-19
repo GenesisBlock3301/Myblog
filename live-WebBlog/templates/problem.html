@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}   <title>problem</title> {% endblock %}
+{% block dropdown-menu %}
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        {% for cata in catagories %}
+        <a class="dropdown-item" href="{% url 'catagory' cata.catagory_name %}">{{ cata.catagory_name }}</a>
+        {% endfor %}
+    </div>
+{% endblock %}
+{% block content %}
+<form  method="POST" style="margin: 0 auto">
+    {% csrf_token %}
+    <p><label for="id_title"><b>Title:</b></label><br>
+        <input type="text" name="title" maxlength="100" required="" id="id_title" style="border-radius: 5px;border: 1px solid yellowgreen;"></p>
+    <p><label for="id_descriptions"><b>Descriptions:</b></label> <br>
+        <textarea name="descriptions" cols="40" rows="10" required="" id="id_descriptions" style="border-radius: 5px;border: 1px solid yellowgreen;"></textarea></p>
+    <table>
+        <tbody>
+           <tr>
+              <td></td>
+             <td>
+                 <button type="submit" class="btn btn-success">submit</button></td>
+             </tr>
+        </tbody>
+    </table>
+</form>
+{% endblock %}
+
+{% block col-lg-4 %}
+
+{% endblock %}

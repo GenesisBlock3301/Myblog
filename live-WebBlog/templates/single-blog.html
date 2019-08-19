@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+
+{% block title %}   <title>summery</title> {% endblock %}
+
+{% block dropdown-menu %}
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        {% for cata in catagories %}
+        <a class="dropdown-item" href="{% url 'catagory' cata.catagory_name %}">{{ cata.catagory_name }}</a>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block content %}
+            <div class="col-lg-8 posts-list">
+               <div class="single-post">
+                  <div class="feature-img">
+                     <img class="img-fluid" src="{{ post.image.url }}" alt="" style="width: 370px;height: 345px;">
+                  </div>
+                  <div class="blog_details">
+                     <h2>{{ post.title }}</h2>
+                     <ul class="blog-info-link mt-3 mb-4">
+                        <li><a href="#"><i class="far fa-user"></i><strong>{{ post.author }}</strong></a></li>
+                        {% if post.comment_count %}
+                                    <li><i class="ti-comment"></i><a href="{% url 'detail' post.id %}">{{ post.comment_count }} Comment</a></li>
+                                        {% else %}
+                                        <li><i class="ti-comment"></i><a href="{% url 'detail' post.id %}">comment</a></li>
+                        {% endif %}
+                     </ul>
+                     <p class="excert">{{ post.summary }}<a href="{% url 'detail' post.id %}">Read more</a></p>
+                  </div>
+               <div class="comment-form">
+                  <h4>Leave a Reply</h4>
+                  <form method="POST" class="form-contact comment_form" id="commentForm" style="border-radius: 20px;">
+                       {% csrf_token %}
+                       <label for="id_user_name"><b>User name:</b></label>
+                       <input type="text" name="user_name" maxlength="255" required=""  style="width: 290px; height: 35px;border-radius: 9px;margin-bottom: 7px;border: 1px solid yellowgreen;"></p>
+                       <p><label for="id_user_email"><b>User email:</b></label>
+                       <input type="email" name="user_email" maxlength="254" required="" style="width: 290px; height: 35px;border-radius: 9px;margin-bottom: 7px;border: 1px solid yellowgreen;"></p>
+                       <p><label for="id_user_comment"><b>User comment:</b></label>
+                           <textarea name="user_comment" cols="40" rows="10" placeholder="What is your mind ?" maxlength="4000" required="" style="width: 290px; height: 35px;border-radius: 9px;margin-bottom: 7px;border: 1px solid yellowgreen;"></textarea></p>
+                    <button type="submit" class="btn btn-success" >Comment</button>
+                  </form>
+               </div>
+               </div>
+
+               <div class="comments-area">
+                  {% if post.comment_count %}
+                      <h4>{{ post.comment_count }} Comments<h4></h4>
+                      {% else %}
+                      <h4>Comments<h4></h4>
+               {% endif %}
+                       {% for comment in post.comments.all %}
+                  <div class="comment-list">
+                     <div class="single-comment justify-content-between d-flex">
+                        <div class="user justify-content-between d-flex">
+                           <div class="desc">
+                              <p class="comment">
+                                  {{ comment.user_comment|linebreaks  }}
+                              </p>
+                              <div class="d-flex justify-content-between">
+                                 <div class="d-flex align-items-center">
+                                    <h5>
+                                       <p><strong>{{ comment.user_name }}</strong></p>
+                                    </h5>
+                                    <p class="date">{{ comment.comment_date }} </p>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                      {% endfor %}
+               </div>
+{#
+            </div>
+ <div class="col-lg-4">
+               <div class="sidebar_widget">
+                  <div class="sidebar_tittle">
+                     <h3>Latest Post</h3>
+                  </div>
+                  {% for p in latest_post %}
+                        <div class="single_catagory_post post_2 single_border_bottom">
+                            {% if p %}
+                                <div class="category_post_img">
+                                <img src="{{ p.image.url }}" alt="">
+                            </div>
+                            <div class="post_text_1 pr_30">
+                                <p><span> By {{ p.author }}</span> / {{ p.pub_date  }}</p>
+                                <a href="single-blog.html">
+                                    <h3>{{ p.title }}</h3>
+                                </a>
+                            </div>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+
+
+                  <div class="sidebar_tittle">
+                     <h3>Categories</h3>
+                  </div>
+                  <div class="single_catagory_item category">
+                     <ul class="list-unstyled">
+                        {% for cat in catagories %}
+                                <li><a href="{% url 'catagory' cat.catagory_name %}">{{ cat.catagory_name }} ({{ cat.get_cata_count }})</a></li>
+                        {% endfor %}
+                     </ul>
+                  </div>
+               </div>
+            </div>
+
+{% endblock %}
